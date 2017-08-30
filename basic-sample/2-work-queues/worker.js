@@ -6,7 +6,7 @@ amqp.connect('amqp://localhost', function (err, conn) {
     conn.createChannel(function (err, ch) {
         var q = 'task_queue';
         ch.assertQueue(q, { durable: true });
-
+        ch.prefetch(1); //assign 1 task per time
         console.log(" [*] Waiting for messages in %s. To exit press CTRL+C", q);
         ch.consume(q, function (msg) {
             var sec = msg.content.toString().split('.').length - 1;
