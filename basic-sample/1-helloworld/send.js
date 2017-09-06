@@ -2,7 +2,7 @@
 
 var amqp = require('amqplib/callback_api');
 
-amqp.connect('amqp://localhost', function (err, conn) {
+amqp.connect('amqp://rabbitmqtest:111111@192.168.98.128:5672', function (err, conn) {
     conn.createChannel(function (err, ch) {
         var q = 'hello';
 
